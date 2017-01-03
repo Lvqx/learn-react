@@ -15,14 +15,19 @@
     <div id="example"></div>
 </body>
 <script type="text/babel">
-  var HelloMessage = React.createClass({
+  /**
+   * [HelloMessage description]
+   * 定义名字为HelloMessage的组件
+   * @type {[type]}
+   */
+  var HelloMessage = React.createClass({ //定义组件
     render: function() {
       return <h1>Hello React!</h1>
     }
   });
 
   ReactDOM.render(
-    <HelloMessage />,
+    <HelloMessage />,  //使用组件
     document.getElementById('example')
   );
 </script>
