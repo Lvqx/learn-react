@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="build/react.js" charset="utf-8"></script>
+    <script src="build/react-dom.js" charset="utf-8"></script>
+    <script src="build/browser.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <div id="show"></div>
+  <div id="default"></div>
+</body>
+<script type="text/babel">
+
+  /**
+   * [MyTitle description]
+   * 属性检验
+   * @type {[type]}
+   */
+  var MyTitle = React.createClass({
+    PropTypes: {
+      title:React.PropTypes.string.isRequired
+    },
+    render: function() {
+      return <h1>{this.props.title}</h1>
+    }
+  });
+
+  ReactDOM.render(
+    <MyTitle title='1' />,
+    document.getElementById('show')
+  )
+</script>
+
+<script type="text/babel">
+/**
+ * [MyDefault description]
+ * 设置默认属性值
+ * @type {[type]}
+ */
+  var MyDefault = React.createClass({
+    getDefaultProps: function() {
+      return {
+        name: 'default'
+      }
+    },
+    render: function() {
+      return <h1>{this.props.name}</h1>
+    }
+  });
+
+  ReactDOM.render(
+    <MyDefault />,
+    document.getElementById('default')
+  )
+</script>
+</html>

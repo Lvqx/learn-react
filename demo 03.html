@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="build/react.js" charset="utf-8"></script>
+    <script src="build/react-dom.js" charset="utf-8"></script>
+    <script src="build/browser.min.js" charset="utf-8"></script>
+    <style>
+      .test {
+        color:#fff;
+        background-color:#cdcdcd;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="example"></div>
+    <div id="build"></div>
+    <div id="list"></div>
+</body>
+<script type="text/babel">
+  // var style = {
+  //   fontSize:'20',
+  //   fontWeigth:'normal',
+  //   textAlign:'center',
+  //   backgroundColor: '#40f'
+  // }
+  // var HelloMassage = React.createClass({
+  //   render: function() {
+  //     return (
+  //       <div style={{backgroundColor:'#f40',borderStyle:'solid',borderColor:'#04f',borderWidth:1}}>
+  //         <h1 style={style}>{this.props.first}</h1>
+  //         <p className='test'>{this.props.secont}</p>
+  //       </div>
+  //     )
+  //   }
+  // });
+  //
+  // ReactDOM.render(
+  //   <HelloMassage first = 'hello' secont = 'react' />,
+  //   document.getElementById('example')
+
+  /**
+   * 复合组件
+   * @type {[type]}
+   */
+  var WebName = React.createClass({
+    render: function() {
+      return <h1>{this.props.name}</h1>
+    }
+  });
+  var WebLink = React.createClass({
+    render: function () {
+      return <a href="{this.props.link}">{this.props.link}</a>
+    }
+  });
+
+  var Show = React.createClass({
+    render: function() {
+      return (
+        <div>
+          <WebName name={this.props.sname} />
+          <WebLink link={this.props.slink} />
+        </div>
+      )
+    }
+  })
+
+  ReactDOM.render(
+    <Show sname='百度一下' slink='https://www.baidu.com'/>,
+    document.getElementById('example')
+  );
+
+  /**
+   * ...this.props继承父节点的所有属性
+   * @type {[type]}
+   */
+  var Link = React.createClass({
+    render: function() {
+      return <a {...this.props}>{this.props.name}</a>
+    }
+  });
+
+  ReactDOM.render(
+    <Link href="https://github.com" name="男性社交网站" />,
+    document.getElementById('build')
+  )
+
+  var ListView = React.createClass({
+    render: function() {
+      return (
+        <ul>
+          {
+            React.Children.map(this.props.children,function(child) {
+              return <li>{child}</li>
+            })
+          }
+        </ul>
+      )
+    }
+  });
+
+  ReactDOM.render(
+    <ListView>
+      <h3>Hello World!</h3>
+      <h4>Hello React!</h4>
+    </ListView>,
+    document.getElementById('list')
+  )
+
+
+</script>
+
+</html>

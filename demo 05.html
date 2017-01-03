@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="build/react.js" charset="utf-8"></script>
+    <script src="build/react-dom.js" charset="utf-8"></script>
+    <script src="build/browser.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <div id="bbtn"></div>
+  <div id="state"></div>
+
+</body>
+<script type="text/babel">
+  /**
+   * [Button description]
+   * 绑定事件
+   * @type {[type]}
+   */
+  var Button = React.createClass({
+    buttonClick: function() {
+      alert('hello world')
+    },
+    render: function() {
+      return <button onClick={this.buttonClick}>{this.props.buttonTitle}</button>
+    }
+  });
+
+  ReactDOM.render(
+    <Button buttonTitle="helle world" />,
+    document.getElementById('bbtn')
+  )
+
+</script>
+
+ <!--<script type="text/babel">
+  /**
+   * [CheckButton description]
+   * checkbox的两种状态分别对应不同的文本
+   * @type {[type]}
+   */
+  var CheckButton = React.createClass({
+    getInitialState: function() {
+      return {
+        isCheck:false
+      }
+    },
+    handelChange: function() {
+      this.setState({
+        isCheck:!this.state.isCheck
+      })
+    },
+    render: function() {
+      var text = !this.state.isCheck ? '未选中' : '已选中';
+      return (
+        <div>
+          <input type="checkbox" onChange={this.handelChange} />
+          {text}
+        </div>
+      )
+    }
+  });
+
+  ReactDOM.render(
+    <CheckButton />,
+    document.getElementById('state')
+  )
+</script> -->
+<script type="text/babel">
+  var Cb = React.createClass({
+    getInitialState: function() {
+      return {
+        isCheck:false
+      }
+    },
+    handelChange: function() {
+      this.setState({
+        isCheck:!this.state.isCheck
+      })
+    },
+    render: function() {
+      const text = this.state.isCheck ? '已选中' : '未选中';
+      return (
+        <div>
+          <input type="checkbox" onChange={this.handelChange}/>{text}
+        </div>
+      )
+    }
+  })
+  ReactDOM.render(
+    <Cb />,
+    document.getElementById('state')
+  )
+
+
+</script>
+
+
+</html>
